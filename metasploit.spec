@@ -1,5 +1,5 @@
 %define	name	metasploit
-%define	version	3.3.3
+%define	version	3.4.0
 %define	release	%mkrel 1
 
 # prevent rpm to create debug files for binary content
@@ -17,7 +17,7 @@ License:	GPLv2
 Group:		Monitoring
 URL:		http://www.metasploit.com/
 Source0:	http://www.metasploit.com/releases/framework-%{version}.tar.bz2
-Patch:      msf3-3.3.3-fhs.patch
+Patch:      msf3-3.4.0-fhs.patch
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
