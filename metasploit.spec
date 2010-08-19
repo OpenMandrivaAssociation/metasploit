@@ -1,6 +1,6 @@
 %define	name	metasploit
 %define	version	3.4.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 # prevent rpm to create debug files for binary content
 %define _enable_debug_packages    %{nil}
@@ -19,6 +19,8 @@ URL:		http://www.metasploit.com/
 Source0:	http://www.metasploit.com/releases/framework-%{version}.tar.bz2
 Patch:      msf3-3.4.0-fhs.patch
 BuildArch:	noarch
+# To avoid automatic dependency on file
+BuildRequires:	ruby
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
