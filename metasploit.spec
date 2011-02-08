@@ -1,13 +1,13 @@
 %define	name	metasploit
 %define	version	3.5.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 # prevent rpm to create debug files for binary content
 %define _enable_debug_packages    %{nil}
 %define debug_package     %{nil}
-# fix automatic dependencies
+# disable automatic dependencies, because of shipped exploits
 %define __find_provides %{nil}
-%define _requires_exceptions mono(.*)
+%define __find_requires %{nil}
 
 Name:		%{name}
 Version:	%{version}
@@ -17,7 +17,7 @@ License:	GPLv2
 Group:		Monitoring
 URL:		http://www.metasploit.com/
 Source0:	http://www.metasploit.com/releases/framework-%{version}.tar.bz2
-Patch:      msf3-3.4.0-fhs.patch
+Patch:      msf3-3.5.0-fhs.patch
 BuildArch:	noarch
 # To avoid automatic dependency on file
 BuildRequires:	ruby
