@@ -1,6 +1,6 @@
 %define	name	metasploit
 %define	version	3.5.0
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 
 # prevent rpm to create debug files for binary content
 %define _enable_debug_packages    %{nil}
