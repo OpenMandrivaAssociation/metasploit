@@ -1,6 +1,6 @@
 %define	name	metasploit
 %define	version	3.7.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 # prevent rpm to create debug files for binary content
 %define _enable_debug_packages    %{nil}
@@ -17,10 +17,11 @@ License:	GPLv2
 Group:		Monitoring
 URL:		http://www.metasploit.com/
 Source0:	http://www.metasploit.com/releases/framework-%{version}.tar.bz2
-Patch:      msf3-3.5.0-fhs.patch
-BuildArch:	noarch
+Patch0:		msf3-3.7.0-fhs.patch
 # To avoid automatic dependency on file
+Requires:	ruby-RubyGems
 BuildRequires:	ruby
+BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -44,7 +45,7 @@ This package contains a GUI for %{name}.
 
 %prep
 %setup -q -n msf3
-%patch -p 1
+%patch0 -p1
 find . -name .svn | xargs rm -rf
 
 %build
