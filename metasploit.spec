@@ -1,6 +1,6 @@
 %define	name	metasploit
-%define	version	3.7.0
-%define	release	%mkrel 2
+%define	version	4.0.0
+%define	release	%mkrel 1
 
 # prevent rpm to create debug files for binary content
 %define _enable_debug_packages    %{nil}
@@ -17,7 +17,7 @@ License:	GPLv2
 Group:		Monitoring
 URL:		http://www.metasploit.com/
 Source0:	http://www.metasploit.com/releases/framework-%{version}.tar.bz2
-Patch0:		msf3-3.7.0-fhs.patch
+Patch0:		msf3-4.0.0-fhs.patch
 # To avoid automatic dependency on file
 Requires:	ruby-RubyGems
 BuildRequires:	ruby
@@ -36,9 +36,9 @@ Metasploit is an open source project managed by Rapid7.
 %package gui
 Summary:	GUI for %{name}
 Group:		Monitoring
-Requires:   %{name} = %{version}-%{release}
-Requires:   ruby-gtk2
-Requires:   ruby-libglade2
+Requires:	%{name} = %{version}-%{release}
+Requires:	ruby-gtk2
+Requires:	ruby-libglade2
 
 %description gui
 This package contains a GUI for %{name}.
