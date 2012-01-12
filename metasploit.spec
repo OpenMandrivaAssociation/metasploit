@@ -1,6 +1,6 @@
 %define	name	metasploit
-%define	version	4.0.0
-%define	release	%mkrel 1
+%define	version	4.1.4
+%define	release	1
 
 # prevent rpm to create debug files for binary content
 %define _enable_debug_packages    %{nil}
@@ -16,13 +16,11 @@ Summary:	Penetration Testing Resources
 License:	GPLv2
 Group:		Monitoring
 URL:		http://www.metasploit.com/
-Source0:	http://www.metasploit.com/releases/framework-%{version}.tar.bz2
-Patch0:		msf3-4.0.0-fhs.patch
+Source0:	http://www.metasploit.com/releases/framework-latest.tar.bz2
 # To avoid automatic dependency on file
 Requires:	ruby-RubyGems
 BuildRequires:	ruby
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Metasploit provides useful information and tools for penetration
@@ -44,15 +42,12 @@ Requires:	ruby-libglade2
 This package contains a GUI for %{name}.
 
 %prep
-%setup -q -n msf3
-%patch0 -p1
+%setup -q -n msf
 find . -name .svn | xargs rm -rf
 
 %build
 
 %install
-rm -rf %{buildroot}
-
 install -d -m 755 %{buildroot}%{_bindir}
 install -m 755 msf* %{buildroot}%{_bindir}
 
@@ -67,18 +62,13 @@ cp -r tools %{buildroot}%{_datadir}/%{name}
 
 rm -rf %{buildroot}%{_datadir}/%{name}/external/source
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc README
 %{_bindir}/*
 %{_datadir}/metasploit
 %exclude %{_bindir}/msfgui
 
 %files gui
-%defattr(-,root,root)
 %doc README
 %{_bindir}/msfgui
 
