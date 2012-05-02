@@ -1,5 +1,5 @@
 %define	name	metasploit
-%define	version	4.2.0
+%define	version	4.3.0
 %define	release	1
 
 # prevent rpm to create debug files for binary content
@@ -42,7 +42,7 @@ Requires:	ruby-libglade2
 This package contains a GUI for %{name}.
 
 %prep
-%setup -q -n msf
+%setup -q -n msf3
 find . -name .svn | xargs rm -rf
 
 %build
@@ -71,4 +71,3 @@ rm -rf %{buildroot}%{_datadir}/%{name}/external/source
 %files gui
 %doc README
 %{_bindir}/msfgui
-
