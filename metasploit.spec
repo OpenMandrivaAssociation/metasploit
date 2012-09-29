@@ -1,5 +1,5 @@
 %define	name	metasploit
-%define	version	4.3.0
+%define	version	4.4.0
 %define	release	1
 
 # prevent rpm to create debug files for binary content
