@@ -63,11 +63,9 @@ cp -r tools %{buildroot}%{_datadir}/%{name}
 rm -rf %{buildroot}%{_datadir}/%{name}/external/source
 
 %files
-%doc README
 %{_bindir}/*
 %{_datadir}/metasploit
 %exclude %{_bindir}/msfgui
 
 %files gui
-%doc README
 %{_bindir}/msfgui
