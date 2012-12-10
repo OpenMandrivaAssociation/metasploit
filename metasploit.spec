@@ -1,24 +1,22 @@
-%define	name	metasploit
-%define	version	4.4.0
-%define	release	1
+# rpmlint check is really useless here
+%define _build_pkgcheck_set %{nil}
 
 # prevent rpm to create debug files for binary content
 %define _enable_debug_packages    %{nil}
 %define debug_package     %{nil}
-# disable automatic dependencies, because of shipped exploits
-%define __find_provides %{nil}
-%define __find_requires %{nil}
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		metasploit
+Version:	4.4.0
+Release:	2
 Summary:	Penetration Testing Resources
 License:	GPLv2
 Group:		Monitoring
 URL:		http://www.metasploit.com/
-Source0:	http://www.metasploit.com/releases/framework-latest.tar.bz2
+Source0:	http://www.metasploit.com/releases/framework-%{version}.tar.bz2
 # To avoid automatic dependency on file
-Requires:	ruby-RubyGems
+Requires:	rubygems
+Requires:	rubygem(msgpack)
+AutoReqProv:	no
 BuildRequires:	ruby
 BuildArch:	noarch
 
@@ -35,8 +33,7 @@ Metasploit is an open source project managed by Rapid7.
 Summary:	GUI for %{name}
 Group:		Monitoring
 Requires:	%{name} = %{version}-%{release}
-Requires:	ruby-gtk2
-Requires:	ruby-libglade2
+Requires:	rubygem(gtk2)
 
 %description gui
 This package contains a GUI for %{name}.
@@ -44,6 +41,8 @@ This package contains a GUI for %{name}.
 %prep
 %setup -q -n msf3
 find . -name .svn | xargs rm -rf
+find . -type f | \
+    xargs perl -pi -e "s|msfbase = __FILE__|msfbase = '%{_datadir}/%{name}/.'|"
 
 %build
 
@@ -63,9 +62,12 @@ cp -r tools %{buildroot}%{_datadir}/%{name}
 rm -rf %{buildroot}%{_datadir}/%{name}/external/source
 
 %files
+%doc HACKING documentation/*
 %{_bindir}/*
 %{_datadir}/metasploit
 %exclude %{_bindir}/msfgui
 
 %files gui
 %{_bindir}/msfgui
+
+
