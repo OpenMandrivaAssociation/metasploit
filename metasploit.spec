@@ -7,7 +7,7 @@
 
 Name:		metasploit
 Version:	4.4.0
-Release:	2
+Release:	3
 Summary:	Penetration Testing Resources
 License:	GPLv2
 Group:		Monitoring
