@@ -11,7 +11,7 @@ Release:	3
 Summary:	Penetration Testing Resources
 License:	GPLv2
 Group:		Monitoring
-URL:		http://www.metasploit.com/
+URL:		https://www.metasploit.com/
 Source0:	http://www.metasploit.com/releases/framework-%{version}.tar.bz2
 # To avoid automatic dependency on file
 Requires:	rubygems
